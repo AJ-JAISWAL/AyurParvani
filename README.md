@@ -75,4 +75,4 @@ The AyurParvani can be used for answering ayurveda-related queries. To use the b
 
 5. The bot can be customized to return specific information based on the query and context provided.
 
-https://github.com/AJ-JAISWAL/AyurParvani/assets/108292938/129e553c-055d-4ade-b86e-a3fce6b4d5d5
+![Screenshot 2024-06-08 142342](https://github.com/AJ-JAISWAL/AyurParvani/assets/108292938/129e553c-055d-4ade-b86e-a3fce6b4d5d5)
