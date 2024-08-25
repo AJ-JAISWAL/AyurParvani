@@ -9,3 +9,4 @@ faiss-cpu
 streamlit
 huggingface_hub
 langchain-groq
+langchain_community
