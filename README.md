@@ -1,6 +1,7 @@
-# AyurParvani
+# AyurParvani     
 
 AyurParvani is a powerful tool designed to provide Ayurveda information by answering user queries using state-of-the-art language models and vector stores. This README will guide you through the setup and usage of the AyurParvani.
+Live Demo Link : https://ayurparvani.streamlit.app/
 
 ## Table of Contents
 
