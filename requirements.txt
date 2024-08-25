@@ -1,4 +1,5 @@
-﻿pypdf
+--upgrade pip
+pypdf
 langchain
 torch
 accelerate
