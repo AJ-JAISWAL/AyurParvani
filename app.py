@@ -2,8 +2,9 @@ import streamlit as st
 from langchain.prompts import PromptTemplate
 from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_community.vectorstores import FAISS
-from langchain_community.llms import CTransformers
 from langchain.chains import RetrievalQA
+from langchain_groq import ChatGroq
+
 
 DB_FAISS_PATH = 'vectorstore/db_faiss'
 custom_prompt_template = """Use the following pieces of information to answer the user's question.
@@ -20,7 +21,7 @@ st.set_page_config(page_title="🤖🧠  AyurParvani")
 
 
 st.title('🤖🧠 AyurParvani')
-st.write('This ')
+st.write('This chatbot will provide the knowledge about ayurveda.')
 
 def set_custom_prompt():
     """
@@ -31,15 +32,13 @@ def set_custom_prompt():
     return prompt
 
 
+groq_api_key="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"
+
 def load_llm():
-    # Load the locally downloaded model here
-    llm = CTransformers(
-        model = "TheBloke/Llama-2-7B-Chat-GGML",
-        model_type="llama",
-        max_new_tokens = 512,
-        temperature = 0.5
-    )
+    llm = ChatGroq(groq_api_key=groq_api_key,
+                   model_name="Llama3-8b-8192")
     return llm
+
 
 def retrieval_qa_chain(llm, prompt, db):
     qa_chain = RetrievalQA.from_chain_type(llm=llm,
