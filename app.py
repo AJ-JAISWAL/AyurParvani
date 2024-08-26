@@ -39,6 +39,11 @@ def load_llm():
                    model_name="Llama3-8b-8192")
     return llm
 
+def load_llm1(query):
+    llm = ChatGroq(groq_api_key=groq_api_key,
+                   model_name="Llama3-8b-8192")
+    return llm.invoke(query).content
+
 
 def retrieval_qa_chain(llm, prompt, db):
     qa_chain = RetrievalQA.from_chain_type(llm=llm,
@@ -91,11 +96,16 @@ if st.session_state.messages[-1]["role"] != "assistant":
         with st.spinner("Thinking..."):
             answer= final_result(prompt)
             response = answer['result']
-            placeholder = st.empty()
-            full_response = ''
-            for item in response:
-                full_response += item
+            if "I'm sorry"  in response or "I don't know" in response:
+                placeholder = st.empty()
+                full_response=load_llm1(prompt)
                 placeholder.markdown(full_response)
-            placeholder.markdown(full_response)
+            else:
+                placeholder = st.empty()
+                full_response = ''
+                for item in response:
+                    full_response += item
+                    placeholder.markdown(full_response)
+                placeholder.markdown(full_response)
     message = {"role": "assistant", "content": full_response}
     st.session_state.messages.append(message)
